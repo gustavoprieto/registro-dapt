@@ -1,0 +1,48 @@
+Package Report
+
+-----------------------------------------------------------------------------
+Document:
+Name: tarjeta-presentacion-dmh.v1.ai
+Color Mode: RGB color
+Color Profile: sRGB IEC61966-2.1
+Ruler Units: millimeters
+Artboard Dimensions: 210.0016 mm x 297.0001 mm
+Show Images in Outline Mode: OFF
+Highlight Substituted Fonts: OFF
+Highlight Substituted Glyphs: OFF
+Preserve Text Editability
+Simulate Colored Paper: OFF
+
+-----------------------------------------------------------------------------
+Spot Color Objects:
+PANTONE 310 C (Lab)
+
+-----------------------------------------------------------------------------
+Missing Fonts:NONE
+
+-----------------------------------------------------------------------------
+Protected Fonts that were not packaged:NONE
+
+-----------------------------------------------------------------------------
+Fonts:
+DINPro-Regular (OTF)
+DINPro-Bold (OTF)
+
+-----------------------------------------------------------------------------
+Embedded Fonts:
+NONE
+
+-----------------------------------------------------------------------------
+Missing Links:
+NONE
+
+-----------------------------------------------------------------------------
+Linked Images:
+
+/Users/fitodac/FITODAC/DMH/web/_resources/cloudy-sky-wallpaper-7.jpg
+Type: RGB
+Bits per Pixel: 24
+Channels: 3
+Size: 6750K, 1920 by 1200 pixels
+Dimensions: 267.593 by 167.246 points 
+Resolution: 516.605 by 516.605 pixels per inch

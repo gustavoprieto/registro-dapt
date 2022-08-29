@@ -1,0 +1,15 @@
+/* .container {
+    @apply px-2 mx-auto max-w-7xl;
+}
+/* para una pantalla sm */
+/* @media (min-width: 640px) {
+    .container {
+        @apply px-2;
+    }
+} */
+/* para una pantalla lg */
+/* @media (min-width: 1024px) {
+    .container {
+        @apply px-4;
+    }
+} */ 
