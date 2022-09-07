@@ -52,7 +52,7 @@ class UserSeeder extends Seeder
 
     //    $role = Role::where('name', 'Administrador')->first();
        
-        User::factory(10)->create();
+     //   User::factory(10)->create();
 
         // $usuarios = User::all();
         // foreach ($usuarios as $usuario) {

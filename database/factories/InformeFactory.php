@@ -34,8 +34,8 @@ class InformeFactory extends Factory
             'turno_id' => $turno,
             'comentario'=>'Este es el comentario del Informe  del usuario ' . $usuario . ' de fecha ' . $fecha 
             . ' en el turno ' . $turno, 
-            'status' => 1
-
+            'status' => 1,
+            'numero' =>'121/2020'
         ];
     }
 }

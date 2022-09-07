@@ -15,14 +15,17 @@
     <!-- {!! Form::open(['route'=>'admin.informes.index']) !!} -->
     {!! Form::model($informe, ['route' => ['admin.informes.update', $informe], 'method'=>'put']) !!}
         <div class="form-group alig-items-center">    
-        {!! Form::label('titulo', 'Detalle del INFORME', ['class'=>'align-items-center']) !!}
+        {!! Form::label('titulo', 'Detalle del INFORME', ['class'=>'mx-4']) !!}
+        {{ $informe->numero }}
         {!! Form::label('fecha', 'Fecha:', ['class'=>'mx-4']) !!}
         {{-- {!! Form::date('fecha', $informe->Fecha ,['class' => 'hidden']) !!}  --}}
-        {{ $informe->Fecha }}
+        {{-- <span class="text-base"> {{$informe->Fecha->format('d-m-Y')}}</span> --}}
+        {{ $informe->Fecha->format('d-m-Y') }}
         {!! Form::label('turno', 'turno:', ['class'=>'mx-4']) !!}
         {{-- {!! Form::select('turno', $turnos ,$turnos,['class' => 'form-control-sm']) !!} --}}
         {{ $informe->turno->Descripcion }}
         {!!Form::submit('Actualizar Informe', ['class' =>"bg-blue", "rounded-full", "px-2", "py-2","align-items-center" ])!!}
+        <!-- <a class="btn btn-secoundary btn-sm"href="{{route('informe.index')}}">Cancelar</a> </td>  -->
         </div>
     </div>
 </div>
@@ -48,7 +51,7 @@
             <td height='5px' >
                 <article class="font-serif text-sm">
                     <span class="pl-1 font-bolt">
-                        {{ $informeable->equipo->Nombre }}...
+                        {{ $informeable->equipo->Nombre }}
                     </span>
                 </article> 
             </td>

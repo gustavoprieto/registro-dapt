@@ -243,18 +243,45 @@ return [
         // Sidebar items:
         [
             'type' => 'sidebar-menu-search',
-            'text' => 'search',
+            'text' => 'Buscar',
         ],
         [
             'text' => 'blog',
             'url'  => 'admin/blog',
             'can'  => 'manage-blog',
         ],
-                                                //  [
+                 [
+            'text' => 'Todos los informes',
+            'route'  => 'informe.index',
+            'icon' => 'fab fa-stack-overflow',
+            //'can'  =>'admin.users.index'
+        ],
+         [
+            'text' => 'Crear Nuevo informe',
+            'route'  => 'admin.informes.create',
+            'icon' => 'fas fa-edit',
+            //'can'  =>'admin.users.index'
+        ],
+        [
+            'text' => 'Buscar informes',
+            'route'  => 'admin.informes.buscar',
+            'icon' => 'fas fa-search ',
+            //'can'  =>'admin.roles.index'
+        ],                                       //  [
                                                 //     'text'        => 'Dashboard',
                                                 //     'route'         => 'admin.home',
                                                 //     'icon'        => 'fas fa-person-booth fa-fw',
                                                 // ],
+
+        
+        ['header' => 'ADMINISTRACION'],
+           [
+            'text' => 'Nuevo Informe',
+            'route'  => 'admin.informes.create',
+            'icon' => 'fas fa-chalkboard-teacher fa-fw',
+            'can'  =>'admin.users.index',
+            'can'=> 'admin.home'
+        ],
         [
             'text' => 'Usuarios',
             'route'  => 'admin.users.index',
@@ -268,14 +295,6 @@ return [
             'can'  =>'admin.roles.index'
         ],
         
-        ['header' => 'CONTROLES'],
-        [
-            'text' => 'Nuevo Informe',
-            'route'  => 'admin.informes.create',
-            'icon' => 'fas fa-chalkboard-teacher fa-fw',
-            'can'  =>'admin.users.index',
-            'can'=> 'admin.home'
-        ],
         [
             'text' => 'Turnos',
             'route'  => 'admin.turnos.index',

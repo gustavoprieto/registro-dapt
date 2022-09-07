@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('informes', function (Blueprint $table) {
             $table->id();
+            $table->string('numero', 15);
             $table->date('Fecha');
             $table->longText('comentario')->nullable();
             $table->enum('status',[1,2])->default(1);

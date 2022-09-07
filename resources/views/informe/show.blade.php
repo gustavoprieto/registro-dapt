@@ -5,7 +5,6 @@
 @section('content_header')
     @include('informe.partials.cabecera')
 
-
 @stop
 
 @section('content')
@@ -33,18 +32,11 @@
             @endif
         </tr>
     </table>
-</div>
-
-
-
-
-
-
-    
+</div>  
 
     <div class="grid grid-cols-1 gap-1 px-2 py-2 mx-2 bg-orange-300 md:grid-cols-2 lg:grid-cols-4">
         <article> <span class="text-base font-bold text-gray-600">Informe Nro.:</span>
-            <span class="text-base">{{$informe->id}}</span>
+            <span class="text-base">{{$informe->numero}}</span>
         </article>
         <article><span class="text-base font-bold text-gray-600">Fecha:</span>
             {{-- <span class="text-base"> {{$informe->Fecha->format('%A %d %B %Y')}}</span> --}}
@@ -78,7 +70,7 @@
                             <td>
                                 <article class="font-serif text-xs">
                                     <span class="pl-1 font-bolt">
-                                        {{ $informeable->equipo->Nombre }}...
+                                        {{ $informeable->equipo->Nombre }}
                                     </span>
                                 </article> 
                             </td>
@@ -111,8 +103,7 @@
             <p class="font-bold text-blue-900">Sin comentario</p>  
         @endif
        
-    </div>
-       
+    </div>     
 </x-app-layout>
 @stop
 
@@ -146,8 +137,8 @@
             text: "Este Informe se eliminará definitivamente!",
             icon: 'warning',
             showCancelButton: true,
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
+            confirmButtonColor: '#d33',
+            cancelButtonColor: '#3085d6',
             confirmButtonText: '¡Sí, eliminar!'
             }).then((result) => {
             if (result.isConfirmed) {
@@ -176,7 +167,7 @@
                 </script>
             @endif
 
-                </script>
+                {{-- </script> --}}
 
 
 @stop

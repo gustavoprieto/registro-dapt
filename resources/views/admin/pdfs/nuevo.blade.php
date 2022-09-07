@@ -1,7 +1,5 @@
 <?php
-
 use Barryvdh\DomPDF\Facade\Pdf as PDF;
-
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -26,30 +24,36 @@ use Barryvdh\DomPDF\Facade\Pdf as PDF;
         h5{
           padding: 0cm 0cm 0cm 0cm;  
         }
-            
-
-
+        .page-break {
+            page-break-after: always;
+        }
     </style>
 </head>
 <body>
-
-<div style="float: left" class="mr-8">
-    <img src="{{asset('/images/dinaclogo.png')}}" alt="" width='90px'>
-</div>&nbsp;
-<div style="float: left">
-    <img src="{{asset('/images/metconrayo.png')}}" alt="" width='40px'>
+<div >
+    
+<h4 style="float: center; margin: left 120px;">DIRECCION DE METEOROLOGIA E HIDROLOGIA</h4>
+  <p> 
+        <img src="{{asset('/images/dinaclogo.png')}}" style="float: left" width='90px' >
+    </p>    
+      <!-- <p> 
+        <img src="{{asset('/images/goiernonacional.png')}}" alt=""  width='90px' style="float: right" > 
+    </p>  -->
+     
+    <p> 
+        <img src="{{asset('/images/dmh.png')}}" style="float: right; margin-top:-25px" alt="" width='40px'> 
+    </p>
+  
 </div>
-<div style="float: right">
-    <img src="{{asset('/images/goiernonacional.png')}}" alt=""  width='90px'>
-</div> 
 <div>
-   <h2 margin="66px" >Dirección de Meteorología e Hidrología</h2> 
+
+<div>
+    <h4 style="text-align: center">Sistema de Registro del DAPT</h4>
 </div>
-<h4>Sistema de Registro del DAPT</h4>
 {{-- https://www.youtube.com/watch?v=D5nnrGSDUzI --}}
 <div>
     <article>Informe Nro.:
-        <span>{{$informe->id}}</span>
+        <span>{{$informe->numero}}</span>
     </article>
         <article><span>Fecha:</span>
             <span> {{$informe->Fecha->format('d-m-Y')}}</span>
@@ -62,7 +66,7 @@ use Barryvdh\DomPDF\Facade\Pdf as PDF;
         </article> 
     </div>
     <div>
-        <h3>Detalle del informe</h3>
+        <h4>Detalle del informe</h4>
     </div>
     <div>
         @foreach($informeables as $informeable)
@@ -75,7 +79,7 @@ use Barryvdh\DomPDF\Facade\Pdf as PDF;
             <table>
                 <tr>
                     <td>
-                        {{ $informeable->equipo->Nombre }}...
+                        {{ $informeable->equipo->Nombre }}
                     </td>
                     <td>
                         @if($informeable->estado->valor == 100)
@@ -101,6 +105,13 @@ use Barryvdh\DomPDF\Facade\Pdf as PDF;
         @endif
        
     </div>
-
+	<script type="text/php">
+        if ( isset($pdf) ) {
+            $pdf->page_script('
+                $font = $fontMetrics->get_font("Arial, Helvetica, sans-serif", "normal");
+                $pdf->text(270, 800, "Informe: {{$informe->numero}} "." Pág $PAGE_NUM de $PAGE_COUNT", $font, 10);
+            ');
+        }
+	</script>
 </body>
 </html>

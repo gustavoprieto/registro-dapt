@@ -19,8 +19,9 @@
                         {!! Form::label('fecha', 'Fecha:', ['class'=>'mx-4']) !!}
                         {!! Form::date('fecha', \Carbon\Carbon::now() ,['class' => 'form-control-sm']) !!} 
                         {!! Form::label('turno', 'turno:', ['class'=>'mx-4']) !!}
-                        {!! Form::select('turno', $turnos ,null,['class' => 'form-control-sm', 'placeholder'=>'elegir turno']) !!} 
-                        {!!Form::submit('Guadar Informe', ['class' => 'form-control-sm', 'btn btn-primary btn-sm', 'mx-4'])!!}
+                        {!! Form::select('turno', $turnos ,null,['class' => 'form-control-sm', 'placeholder'=>'elegir turno']) !!}
+                        {!!Form::submit('Guadar Informe', ['class' => 'bg-blue'])!!} 
+                        <!-- {!!Form::submit('Guadar Informe', ['class' => 'form-control-sm', 'btn btn-primary btn-sm', 'mx-4'])!!} //class="px-2 py-2 rounded-full bg-green" -->
                     </div>                   
               
 

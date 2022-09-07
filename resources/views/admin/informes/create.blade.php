@@ -25,11 +25,12 @@
             </div> --}} 
 
           {{-- {!! Form::date('fecha', \Carbon\Carbon::now()) !!}  --}}
-          <!-- <p>Reunión: <input type="datetime-local" name="horareunion"> -->
+          <!-- <p>Reunión: <input type="datetime-local" name="horareunion"> btn btn-primary btn-sm-->
         <input type="date" name ="fecha" id="fecha" value={{ $hoy }}  min="2022-05-01" max= {{$hoy}}>
         {!! Form::label('turno', 'turno:', ['class'=>'mx-4']) !!}
         {!! Form::select('turno', $turnos ,$turnos,['class' => 'form-control-sm']) !!}
-        {!!Form::submit('Guadar Informe', ['class' => 'form-control-sm', 'btn btn-primary btn-sm', 'me-4'])!!}
+        {!!Form::submit('Guadar Informe', ['class' => 'btn btn-primary btn-sm', 'me-4'])!!} 
+        <!-- //'form-control-sm',  -->
         @error('turno')
             <span class="font-bold text-danger">{{ $message }}</span>
         @enderror

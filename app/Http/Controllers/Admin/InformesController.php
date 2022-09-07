@@ -67,17 +67,58 @@ class InformesController extends Controller
      */
     public function store(Request $request)
     {
+    // return $request;
+        
+        //***************               
+                                   
+       
+        //obtener año actual
+        $elnro = "";
+        $today = Carbon::now();//->format('Y-m-d'); //yyyy-mm-dd etc
+        $a = $today->format('Y');
+       $aniotoday = strval($a);
+        //------------------------obtener del rgistro delultimo registro ---
+        $ultimo_registro = Informe::latest()->first();
+        if ($ultimo_registro ==""){
+            $elnro = "1" . "/". $aniotoday;
+            
+        }else{$fecha_registro = $ultimo_registro->numero;
+        
+                //------obtener año ---
+                $anioregistro = substr($fecha_registro,-4);
+
+                //***------verificar si son diferentes los años-----------------------
+                $elnroentero = 0;
+                if ($aniotoday <> $anioregistro){
+                    $elnro ="1/". strval($aniotoday);
+                }else{  
+                    for($i=0;strlen($fecha_registro);$i++)
+                        {
+        	                if ($fecha_registro[$i] <> "/"){
+                                $elnro = $elnro . $fecha_registro[$i];
+                                }else{
+                                break;
+                                }
+                        }
+                    $elnroentero= intval($elnro);
+                    $elnroentero= $elnroentero + 1;
+                    $elnro = strval($elnroentero).'/'.$anioregistro;
+                }
+        }
+                //return $elnro;
+
         $informe_id = 0;
         $equipos= Equipo::where('status',1)->get();
         $tipoequipos = TipoEquipo::where('status',1)->get();
 
-    //************************************* */
+    //************************************* 
                 $informes = DB::insert(
-                                'INSERT INTO informes (Fecha, usuario_id, turno_id, comentario, created_at,updated_at)
-                                VALUES (:Fecha, :usuario_id, :turno_id, :comentario, :created_at, :updated_at)', [
+                                'INSERT INTO informes (Fecha, usuario_id, turno_id, numero, comentario, created_at,updated_at)
+                                VALUES (:Fecha, :usuario_id, :turno_id, :numero, :comentario, :created_at, :updated_at)', [
                                     'Fecha'=> $request->fecha,
                                     'usuario_id'=> auth()->user()->id,
                                     'turno_id'=>$request->turno,
+                                    'numero'=>$elnro,
                                     'comentario'=>$request->comentario,
                                     'created_at'=>Carbon::now(),
                                     'updated_at'=>Carbon::now()
@@ -110,12 +151,9 @@ class InformesController extends Controller
 
     cache::flush();
             
-    // return $request;
-        
-        //***************               
-                                   
-       // return $request->tipoequipo_id;
+
        return redirect()->route('informe.index')->with('crear', 'si');
+
     }
 
     /**
@@ -123,7 +161,7 @@ class InformesController extends Controller
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
-     */
+     **/
     public function show(Informe $informe)
     {
         // return $informe;
@@ -158,23 +196,26 @@ class InformesController extends Controller
         
         $informeables =Informeable::where('informe_id',$informe->id)->get();
         $informe_id = 0;
-
-        foreach($infoanteriores as $infoanterior){
-            if($infoanterior->comentario <>$request->comentario){
-                $actualiza2 = DB::table('informes')
-                ->where('id',$informe->id)
-                ->update(['comentario'=>$request->comentario]);
-            }
-        }
+        $fechaahora = Carbon::now();
+        $cambia = 0;
 
         foreach ($informeables as $informeable) {
             $numeroregistro = $informeable->id;
             if($informeable->estado_id <> $request->estado[$informe_id]){
+                $cambia= 1;
                 $actualiza2 = DB::table('informeables')
                     ->where('id',$numeroregistro)
-                    ->update(['estado_id'=>$request->estado[$informe_id]]);
+                    ->update(['estado_id'=>$request->estado[$informe_id]], ['updated_at'=>Carbon::now()]);
             }
             $informe_id++;
+        }
+        foreach($infoanteriores as $infoanterior){
+            if(($infoanterior->comentario <>$request->comentario) or ($cambia==1)){
+                $actualiza2 = DB::table('informes')
+                ->where('id',$informe->id)
+                // ->update(['comentario'=>$fechaahora],['updated_at'=>$fechaahora]);
+                ->update(['comentario'=>$request->comentario],['updated_at'=>$fechaahora]);
+            }
         }
         cache::flush();
      return redirect()->route('informe.show', $informe)->with('actualiza', 'si');
@@ -196,11 +237,11 @@ class InformesController extends Controller
         // return $this->role->name;
         $turnoborra1 = DB::table('informes')
         ->where('id',$informe->id)
-        ->update(['status'=>2]);
+        ->update(['status'=>2],['updated_at'=>Carbon::now()]);
 
         $turnoborra2 = DB::table('informeables')
         ->where('informe_id',$informe->id)
-        ->update(['status'=>2]);
+        ->update(['status'=>2],['updated_at'=>Carbon::now()]);
 
         cache::flush();
         return redirect()->route('informe.index')->with('eliminar', 'ok');

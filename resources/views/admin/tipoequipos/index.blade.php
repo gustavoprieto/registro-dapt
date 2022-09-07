@@ -99,8 +99,8 @@
         text: "Este nombre de grupo se eliminará definitivamente!",
         icon: 'warning',
         showCancelButton: true,
-        confirmButtonColor: '#3085d6',
-        cancelButtonColor: '#d33',
+        confirmButtonColor: '#d33',
+        cancelButtonColor: '#3085d6',
         confirmButtonText: '¡Sí, eliminar!'
         }).then((result) => {
         if (result.isConfirmed) {

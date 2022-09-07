@@ -5,16 +5,17 @@ use App\Models\User;
 
 use Livewire\Component;
 
-// use Livewire\WithPagination;
+use Livewire\WithPagination;
 
 class UserIndex extends Component
 {
-    // use WithPagination;
+    use WithPagination;
     // protected $paginationtheme = 'bootstrap';
     
     public $search;
+    
     public function updatingSearch(){
-        $this->resetpage();
+        $this->resetPage();
     }
     
     public function render()
@@ -22,7 +23,7 @@ class UserIndex extends Component
         // $users = User::all();$informes = Informe::where('status',1)->latest('id')->paginate(30);
         $users = User::where('status', 1)
        ->where('name', 'LIKE', '%'. $this->search . '%')
-        //->orWhere('email', 'LIKE', '%'. $this->search . '%')
+        ->orWhere('email', 'LIKE', '%'. $this->search . '%')
         ->paginate(8);
         // return view('admin.users.index', compact('users'));
         return view('livewire.admin.user-index', compact('users'));

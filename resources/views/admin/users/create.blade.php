@@ -38,7 +38,7 @@
             </div>
             <div class="form-group">
                 {!! Form::label('confirm_password', 'reingrese contraseña') !!}
-                {!! Form::text('password_confirmation', null, ['type=password', 'class' => 'form-control', 'placeholder' =>'Reinngrese la contraseña']) !!}
+                {!! Form::text('password_confirmation', null, ['type=password', 'class' => 'form-control', 'placeholder' =>'Reingrese la contraseña']) !!}
                 @error('password_confirmation')
                     <br>
                     <span class="text-danger">{{ $message }}</span>

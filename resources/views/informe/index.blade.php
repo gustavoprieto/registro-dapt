@@ -18,7 +18,7 @@
         <table  class="table table-striped">
             <thead>
                 <tr>
-                    <th>ID</th>
+                    <th>Nro.</th>
                     <th>Fecha</th>
                     <th>Turno</th>
                     <th>Pronosticador</th>
@@ -28,7 +28,7 @@
             <tbody>
                 @foreach ($informes as $informe)
                 <tr>
-                    <td>{{ $informe->id }}</td>
+                    <td>{{ $informe->numero }}</td>
                     <td>{{ $informe->Fecha->format('d-m-Y') }}</td>
                     <td>{{$informe->Turno->Descripcion}}</td>
                     <td>{{$informe->User->name}} </td>

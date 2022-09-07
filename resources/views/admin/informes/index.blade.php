@@ -16,7 +16,7 @@
             <table class="table table-spriped">
                 <thead>
                     <tr>
-                        <th>ID</th>
+                        <th>Nro.</th>
                         <th>Descripción</th>
                         <th>Grupo de equipos</th>
                         <th colspan="2"></th>
@@ -106,8 +106,8 @@
         text: "Este nombre del equipo se eliminará definitivamente!",
         icon: 'warning',
         showCancelButton: true,
-        confirmButtonColor: '#3085d6',
-        cancelButtonColor: '#d33',
+        confirmButtonColor: '#d33',
+        cancelButtonColor: '#3085d6',
         confirmButtonText: '¡Sí, eliminar!'
         }).then((result) => {
         if (result.isConfirmed) {

@@ -13,7 +13,9 @@
 @stop
 
 @section('content')
-    @livewire('admin.user-index')
+    
+    @livewire('admin.user-index') 
+
 @stop
 
 @section('js')
@@ -74,11 +76,11 @@
         e.preventDefault();
         Swal.fire({
         title: '¿Estás seguro?',
-        text: "Los datos delusuario se eliminaran definitivamente!",
+        text: "Los datos del usuario se eliminaran definitivamente!",
         icon: 'warning',
         showCancelButton: true,
-        confirmButtonColor: '#3085d6',
-        cancelButtonColor: '#d33',
+        confirmButtonColor: '#d33',
+        cancelButtonColor: '#3085d6',
         confirmButtonText: '¡Sí, eliminar!'
         }).then((result) => {
         if (result.isConfirmed) {

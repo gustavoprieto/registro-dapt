@@ -84,11 +84,20 @@ class InformeController extends Controller
             $informeables =Informeable::where('informe_id',$informe->id)->get();
             $equipo=0;
             $pdf = PDF::loadView('admin.pdfs.nuevo', compact('informeables', 'informe', 'equipo'));
-            //$pdf->loadHTML('<h1>Test</h1>');
+            //$pdf = PDF::loadHTML('admin.pdfs.nuevo', compact('informeables', 'informe', 'equipo'));
+            //$pdf = PDF::new <html></html>('admin.pdfs.nuevo', compact('informeables', 'informe', 'equipo'));
+            //$pdf->loadHTML('pdf');
+            //https://www.manatums.com/post/como-instalar-la-extension-gd-de-php-para-laravel-621922b989f39
             
             $pdf->setpaper('A4','portrait');
             $pdf->render();
             return$pdf->stream(); 
+            // return response()->streamDownload(function () {
+            //     $pdf = App::make('dompdf.wrapper');
+            //         $pdf->loadHTML('<h1>Test</h1>');
+            //     echo $pdf->stream();
+            // }, '.pdf');
+
             //return $pdf->download('informes nro: '.$informe->id.'.pdf');
             //https://www.youtube.com/watch?v=w1DQIVIV09k
             //return view('admin.pdfs.reporte' , compact('informe', 'informeables', 'equipo'));

@@ -20,13 +20,13 @@
     <img src="{{asset('/images/goiernonacional.png')}}" alt=""  width='90px'>
 </div> 
 <div>
-   <h3 class="mx-48">Dirección de Meteorología e Hidrología</h3> 
+   <h3>Dirección de Meteorología e Hidrología</h3> 
 </div>
 <h4>Sistema de Registro del DAPT</h4>
 
 <div>
     <article><strong>Informe Nro.:</strong>
-        <span>{{$informe->id}}</span>
+        <span>{{$informe->numero}}</span>
     </article>
         <article><strong>Fecha:</strong>
             <span> {{$informe->Fecha->format('d-m-Y')}}</span>
